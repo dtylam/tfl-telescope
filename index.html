@@ -59,7 +59,7 @@
                                 <div class="md-title">{{r[0].vehicleId}}: {{r[0].currentLocation}}</div>
                                 <div class="md-subheading md-primary">{{r[0].lineName}} Line towards {{r[0].towards}}</div>
                             </md-card-header>
-                            <md-card-content>
+                            <md-card-content v-if="vehicleIdView.results.length == 1">
                                 <div v-for="e in r">
                                     <md-divider></md-divider>
                                     <p>{{e.stationName}}
@@ -68,6 +68,27 @@
                                         <span class="md-caption">{{e.platformName}}</span></p>
                                 </div>
                             </md-card-content>
+                            <md-card-expand v-else>
+                                <md-card-actions md-alignment="middle">
+                                    <md-card-expand-trigger>
+                                        <md-button class="fullwidth">
+                                            <md-icon>keyboard_arrow_down</md-icon>
+                                        </md-button>
+                                    </md-card-expand-trigger>
+                                </md-card-actions>
+
+                                <md-card-expand-content>
+                                    <md-card-content>
+                                        <div v-for="e in r">
+                                            <md-divider></md-divider>
+                                            <p>{{e.stationName}}
+                                                <span class="md-body-2" style="float: right;">{{timeConversion(e.timeToStation)}}</span>
+                                                <br />
+                                                <span class="md-caption">{{e.platformName}}</span></p>
+                                        </div>
+                                    </md-card-content>
+                                </md-card-expand-content>
+                            </md-card-expand>
                         </md-card>
                         <span v-if="vehicleIdView.error" class="md-error">API error.</span>
                     </div>
@@ -93,9 +114,9 @@
                                 <div class="md-subheading">{{r[0].lineName}} Line towards {{r[0].towards}}</div>
                             </md-card-header>
                             <md-card-expand>
-                                <md-card-actions>
+                                <md-card-actions md-alignment="middle">
                                     <md-card-expand-trigger>
-                                        <md-button class="md-icon-button">
+                                        <md-button class="fullwidth">
                                             <md-icon>keyboard_arrow_down</md-icon>
                                         </md-button>
                                     </md-card-expand-trigger>
