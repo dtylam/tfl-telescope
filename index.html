@@ -47,7 +47,7 @@
                 <md-field md-clearable class="search-space">
                     <md-icon>search</md-icon>
                     <label>Vehicle ID</label>
-                    <md-input v-model="vehicleIdView.enteredId" maxlength="7"></md-input>
+                    <md-input v-model="vehicleIdView.enteredId" maxlength="7" type="tel"></md-input>
                     <!-- <span class="md-error">Vehicle ID is a required input</span> -->
                 </md-field>
                 <md-button @click="vehicleIdQuery()" class="md-raised md-primary go-button">Find</md-button>
