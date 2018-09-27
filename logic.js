@@ -1,4 +1,5 @@
 Vue.use(VueMaterial.default)
+// Vue.use(VueRouter)
 var vm = new Vue({
     el: '#app',
     data: {
@@ -23,7 +24,34 @@ var vm = new Vue({
             error: false
         }
     },
-    created: function () { this.getBasics() },
+    created: function () {
+        this.getBasics();
+        // check URL params
+        const params = new URL(location.href).searchParams;
+        const line = params.get('line');
+        const id = params.get('id');
+        if (line !== null && id !== null) {
+            // set to vehicleIdView
+            this.focus = 0;
+            // fire request
+            this.vehicleIdView.enteredId = id;
+            this.vehicleIdQuery(line);
+        }
+        else if (line !== null) {
+            // set to lineView
+            this.focus = 2;
+            // fire request
+            this.lineView.selectedLine = line;
+            this.lineArrivalsQuery();
+        }
+        else if (id !== null) {
+            // set to vehicleIdView
+            this.focus = 0;
+            // fire request
+            this.vehicleIdView.enteredId = id;
+            this.vehicleIdQuery();
+        }
+    },
     methods: {
         getBasics: function () {
             const API = "https://api.tfl.gov.uk/"
@@ -55,6 +83,32 @@ var vm = new Vue({
                         // return r1.lineId < r2.lineId ? -1 : r1.lineId > r2.lineId ? 1 : 0;
                     })
                     this.vehicleIdView.results = Object.values(this.groupBy(sorted, 'lineId'));
+                    this.vehicleIdView.loading = false;
+                    this.vehicleIdView.error = false;
+                }).catch(error => {
+                    this.vehicleIdView.error = true;
+                });
+        },
+        vehicleIdQuery: function (lineId) {
+            const API = "https://api.tfl.gov.uk/"
+            // show loading spinner
+            this.vehicleIdView.loading = true;
+            // fix vehicle ID if lower than 100
+            var len = this.vehicleIdView.enteredId.length;
+            if (len == 0) return
+            else if (len == 1) this.vehicleIdView.enteredId = "00" + this.vehicleIdView.enteredId
+            else if (len == 2) this.vehicleIdView.enteredId = "0" + this.vehicleIdView.enteredId
+            // Fetch vehicle status: /Vehicle/{ids}/Arrivals
+            fetch(API + "Vehicle/" + this.vehicleIdView.enteredId + "/Arrivals", {
+                method: "get"
+            }).then(response => response.json())
+                .then(json => {
+                    const filtered = json.filter(r => r.lineId == lineId)
+                        .sort(function (r1, r2) {
+                            // Ascending: first timeToStation less than second timeToStation
+                            return r1.timeToStation - r2.timeToStation;
+                        })
+                    this.vehicleIdView.results = [filtered];
                     this.vehicleIdView.loading = false;
                     this.vehicleIdView.error = false;
                 }).catch(error => {
