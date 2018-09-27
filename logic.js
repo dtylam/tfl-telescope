@@ -35,7 +35,7 @@ var vm = new Vue({
             this.focus = 0;
             // fire request
             this.vehicleIdView.enteredId = id;
-            this.vehicleIdQuery(line);
+            this.vehicleIdQueryWLine(line);
         }
         else if (line !== null) {
             // set to lineView
@@ -66,7 +66,7 @@ var vm = new Vue({
             // show loading spinner
             this.vehicleIdView.loading = true;
             // fix vehicle ID if lower than 100
-            var len = this.vehicleIdView.enteredId.length;
+            const len = this.vehicleIdView.enteredId.length;
             if (len == 0) return
             else if (len == 1) this.vehicleIdView.enteredId = "00" + this.vehicleIdView.enteredId
             else if (len == 2) this.vehicleIdView.enteredId = "0" + this.vehicleIdView.enteredId
@@ -75,7 +75,7 @@ var vm = new Vue({
                 method: "get"
             }).then(response => response.json())
                 .then(json => {
-                    var sorted = json.sort(function (r1, r2) {
+                    const sorted = json.sort(function (r1, r2) {
                         // Ascending: first timeToStation less than second timeToStation
                         // if (r1.lineId === r2.lineId) 
                         return r1.timeToStation - r2.timeToStation;
@@ -89,12 +89,12 @@ var vm = new Vue({
                     this.vehicleIdView.error = true;
                 });
         },
-        vehicleIdQuery: function (lineId) {
+        vehicleIdQueryWLine: function (lineId) {
             const API = "https://api.tfl.gov.uk/"
             // show loading spinner
             this.vehicleIdView.loading = true;
             // fix vehicle ID if lower than 100
-            var len = this.vehicleIdView.enteredId.length;
+            const len = this.vehicleIdView.enteredId.length;
             if (len == 0) return
             else if (len == 1) this.vehicleIdView.enteredId = "00" + this.vehicleIdView.enteredId
             else if (len == 2) this.vehicleIdView.enteredId = "0" + this.vehicleIdView.enteredId
@@ -125,13 +125,13 @@ var vm = new Vue({
                 method: "get"
             }).then(response => response.json())
                 .then(json => {
-                    var sorted = json.sort(function (r1, r2) {
+                    const sorted = json.sort(function (r1, r2) {
                         // Ascending: first timeToStation less than second timeToStation
                         if (r1.vehicleId === r2.vehicleId) return r1.timeToStation - r2.timeToStation;
                         // Ascending: first vehicleId less than second vehicleId
                         return r1.vehicleId - r2.vehicleId;
                     })
-                    this.lineView.results = Object.values(this.groupBy(sorted, 'vehicleId'));;
+                    this.lineView.results = Object.values(this.groupBy(sorted, 'vehicleId'));
                     this.lineView.loading = false;
                     this.vehicleIdView.error = false;
                 }).catch(error => {
