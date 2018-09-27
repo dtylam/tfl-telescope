@@ -1,0 +1,61 @@
+#app{
+    height:100vh;
+}
+
+#top-bar{
+    position: fixed;
+    top: 0px;
+}
+
+#page{
+    position: fixed;
+    top: 48px;
+    padding: 24px 4vw;
+    width: 100%;
+    overflow: auto;
+}
+
+#bottom-bar{
+    position: fixed;
+    bottom: 0px;
+}
+
+.md-card{
+    margin-bottom: 12px;
+}
+
+.md-bottom-bar.md-type-fixed .md-bottom-bar-item{
+    max-width: 240px;
+}
+
+.results{
+    max-height: 64vh;
+    width: 100%;
+    padding: 24px 0;
+    overflow: auto;
+}
+
+.fullwidth{
+    width: 100%;
+}
+
+.search-space{
+    width: 60%;
+    float: left;
+}
+
+.go-button{
+    max-width: 25%;
+    float: right;
+    min-height: 44px;
+}
+
+.spinner-host{
+    display: table;
+}
+
+.my-spinner{
+    text-align: center; 
+    vertical-align: middle; 
+    display:table-cell;
+}

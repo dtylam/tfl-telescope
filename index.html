@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>TfL Telescope</title>
+    <!-- Vue.js development version, includes helpful console warnings -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <!-- Vue.js production version, optimized for size and speed -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- Roboto and Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <!-- Vue Material CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+    <!-- Vue Material JS -->
+    <script src="https://unpkg.com/vue-material@beta"></script>
+    <!-- My own CSS -->
+    <link rel="stylesheet" href="my.css">
+    <!-- Web app manifest -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <!-- favicon -->
+    <link rel="icon" href="img/tflclock96.png">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Top Bar -->
+        <md-toolbar id="top-bar">
+            <h3 class="md-title" style="flex: 1">TfL Telescope</h3>
+            <md-button href="https://buymeacoff.ee/dtylam" target="_blank" class="md-icon-button">
+                <md-icon>favorite_border</md-icon>
+            </md-button>
+            <span> | </span>
+            <md-button @click="if (focus == 0) {vehicleIdQuery()} else {lineArrivalsQuery()}" class="md-icon-button">
+                <md-icon>refresh</md-icon>
+            </md-button>
+        </md-toolbar>
+        <!-- Middle Page -->
+        <div id="page">
+            <!-- vehicleIdView -->
+            <div v-if="focus == 0" id="vehicleIdView">
+                <md-field md-clearable class="search-space">
+                    <md-icon>search</md-icon>
+                    <label>Vehicle ID</label>
+                    <md-input v-model="vehicleIdView.enteredId" maxlength="7"></md-input>
+                    <!-- <span class="md-error">Vehicle ID is a required input</span> -->
+                </md-field>
+                <md-button @click="vehicleIdQuery()" class="md-raised md-primary go-button">Find</md-button>
+                <div class="results md-scrollbar">
+                    <div v-if="vehicleIdView.loading">
+                        <md-progress-spinner class="md-accent" md-mode="indeterminate"></md-progress-spinner>
+                    </div>
+                    <div v-else>
+                        <md-card v-for="r in vehicleIdView.results">
+                            <md-card-header>
+                                <div class="md-title">{{r[0].vehicleId}}: {{r[0].currentLocation}}</div>
+                                <div class="md-subheading md-primary">{{r[0].lineName}} Line towards {{r[0].towards}}</div>
+                            </md-card-header>
+                            <md-card-content>
+                                <div v-for="e in r">
+                                    <md-divider></md-divider>
+                                    <p>{{e.stationName}}
+                                        <span class="md-body-2" style="float: right;">{{timeConversion(e.timeToStation)}}</span>
+                                        <br />
+                                        <span class="md-caption">{{e.platformName}}</span></p>
+                                </div>
+                            </md-card-content>
+                        </md-card>
+                        <span v-if="vehicleIdView.error" class="md-error">API error.</span>
+                    </div>
+                </div>
+            </div>
+            <!-- stationView -->
+            <!-- <div v-else-if="focus == 1" id="stationView">
+            </div> -->
+            <!-- lineView -->
+            <div v-else id="lineView">
+                <md-autocomplete class="search-space" md-layout="box" v-model="lineView.selectedLine" :md-options="linesList.map(line => line.id)">
+                    <label>Line</label>
+                </md-autocomplete>
+                <md-button @click="lineArrivalsQuery()" class="md-raised md-primary go-button">Load</md-button>
+                <div class="results md-scrollbar">
+                    <div v-if="lineView.loading">
+                        <md-progress-spinner class="md-accent" md-mode="indeterminate"></md-progress-spinner>
+                    </div>
+                    <div v-else>
+                        <md-card v-for="r in lineView.results">
+                            <md-card-header>
+                                <div class="md-title">{{r[0].vehicleId}}: {{r[0].currentLocation}}</div>
+                                <div class="md-subheading">{{r[0].lineName}} Line towards {{r[0].towards}}</div>
+                            </md-card-header>
+                            <md-card-expand>
+                                <md-card-actions>
+                                    <md-card-expand-trigger>
+                                        <md-button class="md-icon-button">
+                                            <md-icon>keyboard_arrow_down</md-icon>
+                                        </md-button>
+                                    </md-card-expand-trigger>
+                                </md-card-actions>
+
+                                <md-card-expand-content>
+                                    <md-card-content>
+                                        <div v-for="e in r">
+                                            <md-divider></md-divider>
+                                            <p>{{e.stationName}}
+                                                <span class="md-body-2" style="float: right;">{{timeConversion(e.timeToStation)}}</span>
+                                                <br />
+                                                <span class="md-caption">{{e.platformName}}</span></p>
+                                        </div>
+                                    </md-card-content>
+                                </md-card-expand-content>
+                            </md-card-expand>
+                        </md-card>
+                        <span v-if="lineView.error" class="md-error">API error.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Bar -->
+        <md-bottom-bar id="bottom-bar">
+            <md-bottom-bar-item @click="focus = 0" md-label="By Vehicle ID" md-icon="directions_subway"></md-bottom-bar-item>
+            <!-- <md-bottom-bar-item @click="focus = 1" md-label="By Station" md-icon="departure_board"></md-bottom-bar-item> -->
+            <md-bottom-bar-item @click="focus = 2" md-label="By Line" md-icon="line_weight"></md-bottom-bar-item>
+        </md-bottom-bar>
+    </div>
+    <!-- Own Vue.js main logic -->
+    <script src="logic.js"></script>
+</body>
+<!-- https://api.tfl.gov.uk/ -->
+
+</html>

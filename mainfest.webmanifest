@@ -1,0 +1,25 @@
+{
+    "name": "TfL Telescope",
+    "short_name": "TfL Telescope",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#fff",
+    "description": "A simple interface to search for where a vehicle is currently in the TfL network.",
+    "icons": [
+        {
+            "src": "img/tflclock96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "img/tflclock144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "img/tflclock192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
