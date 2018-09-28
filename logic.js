@@ -119,6 +119,7 @@ var vm = new Vue({
             const API = "https://api.tfl.gov.uk/"
             // show loading spinner
             this.lineView.loading = true;
+            // if nothing is entered
             if (this.lineView.selectedLine == "") return
             // Fetch line arrivals: /line/{line Id}/arrivals
             fetch(API + "line/" + this.lineView.selectedLine + "/Arrivals", {

@@ -47,7 +47,7 @@
                 <md-field md-clearable class="search-space">
                     <md-icon>search</md-icon>
                     <label>Vehicle ID</label>
-                    <md-input v-model="vehicleIdView.enteredId" maxlength="7" type="tel"></md-input>
+                    <md-input v-model="vehicleIdView.enteredId" type="tel"></md-input>
                     <!-- <span class="md-error">Vehicle ID is a required input</span> -->
                 </md-field>
                 <md-button @click="vehicleIdQuery()" class="md-raised md-primary go-button">Find</md-button>
@@ -71,9 +71,10 @@
                                 </div>
                             </md-card-content>
                             <md-card-expand v-else>
-                                <md-card-actions md-alignment="middle">
+                                <!-- <md-divider></md-divider> -->
+                                <md-card-actions>
                                     <md-card-expand-trigger>
-                                        <md-button class="fullwidth">
+                                        <md-button class="fullwidth" :md-ripple="false">
                                             <md-icon>keyboard_arrow_down</md-icon>
                                         </md-button>
                                     </md-card-expand-trigger>
@@ -116,9 +117,9 @@
                                 <div class="md-subheading">{{r[0].lineName}} Line towards {{r[0].towards}}</div>
                             </md-card-header>
                             <md-card-expand>
-                                <md-card-actions md-alignment="middle">
+                                <md-card-actions>
                                     <md-card-expand-trigger>
-                                        <md-button class="fullwidth">
+                                        <md-button class="fullwidth" :md-ripple="false">
                                             <md-icon>keyboard_arrow_down</md-icon>
                                         </md-button>
                                     </md-card-expand-trigger>
