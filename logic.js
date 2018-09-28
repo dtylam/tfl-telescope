@@ -77,10 +77,9 @@ var vm = new Vue({
                 .then(json => {
                     const sorted = json.sort(function (r1, r2) {
                         // Ascending: first timeToStation less than second timeToStation
-                        // if (r1.lineId === r2.lineId) 
-                        return r1.timeToStation - r2.timeToStation;
+                        if (r1.lineId === r2.lineId) return r1.timeToStation - r2.timeToStation;
                         // Ascending: first lineid less than second lineid
-                        // return r1.lineId < r2.lineId ? -1 : r1.lineId > r2.lineId ? 1 : 0;
+                        return r1.lineId < r2.lineId ? -1 : r1.lineId > r2.lineId ? 1 : 0;
                     })
                     this.vehicleIdView.results = Object.values(this.groupBy(sorted, 'lineId'));
                     this.vehicleIdView.loading = false;
