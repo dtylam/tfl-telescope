@@ -47,8 +47,7 @@
                 <md-field md-clearable class="search-space">
                     <md-icon>search</md-icon>
                     <label>Vehicle ID</label>
-                    <md-input v-model="vehicleIdView.enteredId" type="tel"></md-input>
-                    <!-- <span class="md-error">Vehicle ID is a required input</span> -->
+                    <md-input v-model="vehicleIdView.enteredId" type="tel" @keyup.enter="vehicleIdQuery()"></md-input>
                 </md-field>
                 <md-button @click="vehicleIdQuery()" class="md-raised md-primary go-button">Find</md-button>
                 <div class="results md-scrollbar">
@@ -102,8 +101,9 @@
             </div> -->
             <!-- lineView -->
             <div v-else id="lineView">
-                <md-autocomplete class="search-space" md-layout="box" v-model="lineView.selectedLine" :md-options="linesList.map(line => line.id)">
-                    <label>Line</label>
+                <md-autocomplete class="search-space" md-layout="box" v-model="lineView.selectedLine"
+                    :md-options="linesList.map(line => line.id)">
+                    <label>Tube Line</label>
                 </md-autocomplete>
                 <md-button @click="lineArrivalsQuery()" class="md-raised md-primary go-button">Load</md-button>
                 <div class="results md-scrollbar">
