@@ -1,25 +1,29 @@
 # tfl-telescope
-http://dtylam.github.io/tfl-telescope
 
-A simple web app for search by VehicleID on the Transport for London (TfL) network.
-
-Tube lines/ vehicle queries have been well tested.
-
-Limited support for other TfL vehicles/ lines.
-For example, queries for bus vehicles (eg. LX58CFV,LX11AZB,LX58CFE) is possible.
-
-## URL param shortcuts
-Try these:
+## Project setup
 ```
-http://dtylam.github.io/tfl-telescope/?line=central
-http://dtylam.github.io/tfl-telescope/?id=1
-http://dtylam.github.io/tfl-telescope/?line={lineId}&id={vehicleId}
+npm install
 ```
 
-## Built with
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-TfL Unified API (http://api.tfl.gov.uk/)
+### Compiles and minifies for production
+```
+npm run build
+```
 
-Vue.js (http://vuejs.org/)
+### Run your tests
+```
+npm run test
+```
 
-Vue Material (http://vuematerial.io/)
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
