@@ -3,18 +3,21 @@
     <TeleTopBar />
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <TeleBtmBar />
   </div>
 </template>
 
 <script>
 import HelloWorld from "./components/HelloWorld.vue";
 import TeleTopBar from "./components/TeleTopBar.vue";
+import TeleBtmBar from "./components/TeleBtmBar.vue";
 
 export default {
   name: "app",
   components: {
     HelloWorld,
-    TeleTopBar
+    TeleTopBar,
+    TeleBtmBar,
   }
 };
 </script>

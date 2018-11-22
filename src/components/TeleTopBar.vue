@@ -1,5 +1,5 @@
 <template>
-    <md-toolbar id="top-bar">
+    <md-toolbar id="teletopbar">
             <h3 class="md-title" style="flex: 1">TfL Telescope</h3>
             <md-button href="https://buymeacoff.ee/dtylam" target="_blank" class="md-icon-button">
                 <md-icon>favorite_border</md-icon>
@@ -18,4 +18,8 @@ export default {
 </script>
 
 <style scoped>
+#teletopbar{
+    position: fixed;
+    top: 0;
+}
 </style>
