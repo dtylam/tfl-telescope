@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { MdToolbar, MdButton, MdIcon, MdBottomBar } from "vue-material/dist/components";
+import { MdApp, MdToolbar, MdButton, MdIcon, MdBottomBar } from "vue-material/dist/components";
 import "vue-material/dist/vue-material.min.css";
 
 Vue.config.productionTip = false
 
+Vue.use(MdApp);
 Vue.use(MdToolbar);
 Vue.use(MdButton);
 Vue.use(MdIcon);

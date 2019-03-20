@@ -1,34 +1,39 @@
 <template>
-  <div id="app">
+  <md-app id="app">
     <TeleTopBar />
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <md-app-content id="page">
+      <SearchBar label="Vehicle ID"/>
+    </md-app-content>
+    
     <TeleBtmBar />
-  </div>
+  </md-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import SearchBar from "./components/SearchBar.vue";
 import TeleTopBar from "./components/TeleTopBar.vue";
 import TeleBtmBar from "./components/TeleBtmBar.vue";
 
 export default {
   name: "app",
   components: {
-    HelloWorld,
+    SearchBar,
     TeleTopBar,
     TeleBtmBar,
   }
 };
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+}
+#page {
+  min-height: 60vh;
 }
 </style>
