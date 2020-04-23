@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="192"
+   height="192"
+   viewBox="0 0 50.799999 50.799999"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="tflclock.svg"
+   inkscape:export-filename="/home/dtylam/GitHub/dtylam.github.io/tfl-telescope/img/tflclock192.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="-83.777742"
+     inkscape:cy="95.665693"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     units="px"
+     inkscape:window-width="1920"
+     inkscape:window-height="986"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1">
+    <inkscape:grid
+       type="xygrid"
+       id="grid1383" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-246.20002)">
+    <path
+       style="fill:#ef4023;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:22.72158623;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 96 20.410156 A 75.590551 75.590551 0 0 0 20.410156 96 A 75.590551 75.590551 0 0 0 96 171.58984 A 75.590551 75.590551 0 0 0 171.58984 96 A 75.590551 75.590551 0 0 0 96 20.410156 z M 96 46.865234 A 49.133858 49.133858 0 0 1 145.13477 96 A 49.133858 49.133858 0 0 1 96 145.13477 A 49.133858 49.133858 0 0 1 46.865234 96 A 49.133858 49.133858 0 0 1 96 46.865234 z "
+       transform="matrix(0.26458333,0,0,0.26458333,0,246.20002)"
+       id="path827" />
+    <rect
+       style="opacity:0.4;fill:#034ea2;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect1377"
+       width="58.737499"
+       height="7.1437497"
+       x="-53.974998"
+       y="310.49377" />
+    <path
+       style="opacity:0.4;fill:#034ea2;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.88976383;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -203.81326,256.56744 v -13.25 h 110.750001 110.75 v 13.25 13.25 h -110.75 -110.750001 z"
+       id="path1379"
+       inkscape:connector-curvature="0"
+       transform="matrix(0.26458333,0,0,0.26458333,0,246.20002)" />
+    <path
+       style="opacity:1;fill:#034ea2;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.44885105;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.7859376,271.60002 v -3.50573 H 25.399999 49.014062 v 3.50573 3.50573 H 25.399999 1.7859376 Z"
+       id="path1381"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#f2f2f2;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.03118074;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5089-3"
+       width="1.9182296"
+       height="14.552082"
+       x="270.6409"
+       y="-39.6875"
+       transform="rotate(90)" />
+    <rect
+       style="opacity:1;fill:#333333;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1.31656134;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect5089"
+       width="2.6458328"
+       height="17.197922"
+       x="24.077084"
+       y="254.66669" />
+  </g>
+</svg>
